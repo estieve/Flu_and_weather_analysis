@@ -187,22 +187,22 @@ Here is the final model:
                       
 Our confusion matrix and accuracy scores:
 
-     [[ 16  73   1]
-      [ 20 108  13]
-      [  1  22  65]]
-     Accuracy Score : 0.5924764890282131
+     [[39 48  3]
+      [41 83 17]
+      [ 3 18 67]]
+      Accuracy Score : 0.5924764890282131
      
      
      Results on the test set:
                     precision    recall  f1-score   support
 
-              0.0       0.43      0.18      0.25        90
-              1.0       0.53      0.77      0.63       141
-              2.0       0.82      0.74      0.78        88
+             0.0       0.47      0.43      0.45        90
+             1.0       0.56      0.59      0.57       141
+             2.0       0.77      0.76      0.77        88
 
-         accuracy                           0.59       319
-        macro avg       0.60      0.56      0.55       319
-     weighted avg       0.58      0.59      0.56       319
+        accuracy                           0.59       319
+       macro avg       0.60      0.59      0.60       319
+    weighted avg       0.59      0.59      0.59       319
      
 ## Results and Conclusions
 
@@ -220,6 +220,15 @@ K-nearest neighbors provided us with the best model, but the accuracy score does
     Decision Tree       0.89      0.38      0.53        
     Random Forest       0.83      0.61      0.71        
     KNN                 0.91      0.66      0.76        
-    Neural Network      0.82      0.74      0.78        
+    Neural Network      0.77      0.76      0.77        
     
-When we look at precision we can see that k-nearest neighbors and the decision tree both did well in regards to how many of the records the model placed in category 2 which were actually in that category. This is a good metric for them, but based on our goal this isn't necessarily important since we are okay with some records falling into category 2 that weren't necessarily in that one. Recall is more likely to describe what we are really looking for since this is telling us how many records that fall into category 2 were labeled as such by the model. In this area the decision tree did poorly and the neural network did far better than all the others with a score of 0.74.
+When we look at precision we can see that k-nearest neighbors and the decision tree both did well in regards to how many of the records the model placed in category 2 which were actually in that category. This is a good metric for them, but based on our goal this isn't necessarily important since we are okay with some records falling into category 2 that weren't necessarily in that one. Recall is more likely to describe what we are really looking for since this is telling us how many records that fall into category 2 were labeled as such by the model. In this area the decision tree did poorly and the neural network did far better than all the others with a score of 0.76. This leads me to believe that the best model for our purposes would be the Neural Network.
+
+### Challenges and Future Considerations
+This effort was far from complete based on the end goal for the analysis. I believe that we have succeeded in finding some correlation between weather and flu infections, but we were not quite comprehensive enough to reach a state where we could confidently predict severity of the flu season. To do so would require a more detailed dataset, specifically in regards to weather tracking. I feel that the three variables we were able to aquire from NOAA are a begninning, but do not contain enough nuance to get us to a final state. Initially my thoughts are that humidity data could prove valuable, we can hint at that with the precipitation information but that really only provides us with a binary 100% or not with regards to moisture in the atmosphere. Another valuable piece of information might be climactic trends, we are dealing with recorded weather data any predictions will need to be based on projections several months out rather than for specific weeks. Incorporating seasonal records into our model could help to refine it, and provide valuable insights when it comes to forcasting the severity of the flu season as a whole. If we can find a way to impute seasonal predictions for moisture, temperatures and weather patterns that can help us target the model to predict what is coming before the flu season starts.
+
+The other problem is reliable data, I really struggled to find consistent weather information. That was apparent in my need to impute a large number of values into the source data. I think there could be more reliable options out there such as Weather Underground, which has an api for pulling data. The problem with that resource is the amount of money I would have to spend to access it, in this scenario it was not worth the return on investment. I view this as a starting point rather than a final product, so my goal was to find relevant data that could drive future data retrieval and assessment.
+
+Finally, I could work on more nuance within the data. By this I mean things such as measuring temperature swings like the difference between the min and max temperature on a given day or for a given week. The challenge with assessments like this is that you can go too far into the nuances while gaining little return; as an example I started with 2 values for precipitation, one was for average daily precipitation for a given week and the other was total precipitation. In the end going that far did not provide me with a significant return and just complicated the data cleaning. In this situation I chose to go with weekly total because that felt more reflective of how precipitation had an impact on a given week.
+
+
