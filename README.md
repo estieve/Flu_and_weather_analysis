@@ -24,6 +24,12 @@ I created an output dataframe for each location that included the key weather an
 ## EDA
 Below are some time-series correlations from each location between the features and the target (flu count). Here I was just looking for notional relationships to see if anything stood out.
 
+### Precipitation
 ![Precip_NY](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_NY.PNG)
 ![Precip_lux](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_lux.PNG)
 ![Precip_mal](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_mal.PNG)
+
+### Max Temp
+![Max_temp_NY](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_NY.PNG)
+![Max_temp_lux](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_lux.PNG)
+![Max_temp_mal](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_mal.PNG)
