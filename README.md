@@ -95,7 +95,19 @@ The values for the optimal solution turned out to be:
                                           
 The results of our model:
 
-                  precision    recall  f1-score   support
+              precision    recall  f1-score   support
+
+         0.0       0.00      0.00      0.00        90
+         1.0       0.49      0.98      0.65       141
+         2.0       0.89      0.38      0.53        88
+
+    accuracy                           0.54       319
+   macro avg       0.46      0.45      0.39       319
+weighted avg       0.46      0.54      0.43       319
+
+Then I ran a random forest model with the same parameters and received the following results:
+
+                   precision    recall  f1-score   support
 
          0.0       0.00      0.00      0.00        90
          1.0       0.52      0.94      0.67       141
@@ -104,3 +116,8 @@ The results of our model:
     accuracy                           0.59       319
    macro avg       0.45      0.52      0.46       319
 weighted avg       0.46      0.59      0.49       319
+
+
+### KNN
+
+
