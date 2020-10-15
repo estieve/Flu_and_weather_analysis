@@ -65,7 +65,7 @@ This looks much better!
 
 ## Data Analysis
 
-Before beginning any analysis I set up the test and training data and then utilized a standard scaler to scale the feature data between -1 and 1.
+Before beginning any analysis I set up the test and training data and then utilized a standard scaler to scale the feature data between -1 and 1. Next my plan was to run various machine learning algorithms to test for the best options. In this situation I will be running classifiers with decision trees, K-nearest neighbors, and neural networks.
 
 ### Decision Tree
 I started with a decision tree to help identify importance features just to test my assumptions that percipitation and max temperature are important features.
@@ -75,3 +75,32 @@ I started with a decision tree to help identify importance features just to test
     avgTmax: .. 0.35
 
     avgTmin: .. 0.27
+
+Then I ran the decision tree through pruning to fine tune the parameters. I did this through a series of efforts to test the optimal values for:
+
+    Max_depth
+    min_samples_split
+    min_samples_leaf
+    max_leaf_nodes
+    min_impurity_decrease
+    
+The values for the optimal solution turned out to be:
+
+    pruned_model = RandomForestClassifier(max_depth=3,
+                                          min_samples_split=30,
+                                          min_samples_leaf=10,
+                                          max_leaf_nodes=4,
+                                          min_impurity_decrease=0.02,
+                                          random_state=35)
+                                          
+The results of our model:
+
+                  precision    recall  f1-score   support
+
+         0.0       0.00      0.00      0.00        90
+         1.0       0.52      0.94      0.67       141
+         2.0       0.83      0.61      0.71        88
+
+    accuracy                           0.59       319
+   macro avg       0.45      0.52      0.46       319
+weighted avg       0.46      0.59      0.49       319
