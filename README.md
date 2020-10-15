@@ -206,7 +206,7 @@ Our confusion matrix and accuracy scores:
      
 ## Results and Conclusions
 
-###What did we learn? 
+### What did we learn? 
 If we look solely at our accuracy scores:
 
     Decision Tree   Accuracy Score : 0.5360501567398119
