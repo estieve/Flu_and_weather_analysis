@@ -7,7 +7,7 @@ To complete this project I had to collect and combine data from multiple sources
 ### Weather Data
 The NOAA api only allows for 365 day of data in a single pull with one attribute, to get around this I built a series of loops to get three attributes per year and then combine the 10 year span into a single dataset. I created the tool in such a way that I could repeat the process easily with different stations to create a compiled list for more than one location. Unfortunately there are both gaps in the datasets where no records are available for specific days, and some outliers where egregious values are present such as precipitation totals greater than 100 inches and temperatures higher than 120°. 
 
-
+![WeatherMal_outliers](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/WeatherMal_outliers.PNG)
 
 These are things that I had to deal with in the weather dataset before I could move forward with adding the flu data. To do so, I removed the egregious values by making then Nan's and reseting exceptionally low values to a specified minimum (0 for precipitation and the location's lowest seasonal temperature for temp). The Nan's I then reset to a mean value since there was a wide distribution of Nan data and filling forward created high plateau peaks of data. The final step involved prepping the data for merging with the weekly flu data, to do this I converted our dataframe of daily records into a new dataframe that calculated weekly averages for our attributes. I then converted the precipitation data to a weekly total because I felt that better represents the amount of precipitation for a given week.
 
