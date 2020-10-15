@@ -41,3 +41,6 @@ Below are some time-series correlations from each location between the features 
 ![Max_temp_NY](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_NY.PNG)
 ![Max_temp_lux](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_lux.PNG)
 ![Max_temp_mal](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_mal.PNG)
+
+### Distribution of Flu Counts
+(https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_unbalanced.PNG)
