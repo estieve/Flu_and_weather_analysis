@@ -203,3 +203,23 @@ Our confusion matrix and accuracy scores:
          accuracy                           0.59       319
         macro avg       0.60      0.56      0.55       319
      weighted avg       0.58      0.59      0.56       319
+     
+## Results and Conclusions
+
+###What did we learn? 
+If we look solely at our accuracy scores:
+
+    Decision Tree   Accuracy Score : 0.5360501567398119
+    Random Forest   Accuracy Score : 0.5862068965517241
+    KNN             Accuracy Score : 0.6520376175548589
+    Neural Network  Accuracy Score : 0.5924764890282131
+    
+K-nearest neighbors provided us with the best model, but the accuracy score doesn't tell us the whole story. The purpose of the project was to predict the severity of flu based on weather conditions. The reason we may want to do this type of analysis is to prepare for conditions that may result in a particularly bad season. In this case the most important category is 2, which includes weeks with 100+ positive flu cases. With this in mind we are more likely to be okay with measuring false positives from the other categories which fall into this one. Because of this accuracy is not necessarily our best metric for our purposes, rather we need to look more closely at the classification report. This allows us to see specifically how well each model scored against the specific categories. Below we will look at the results for category 2.
+
+                    precision    recall  f1-score   
+    Decision Tree       0.89      0.38      0.53        
+    Random Forest       0.83      0.61      0.71        
+    KNN                 0.91      0.66      0.76        
+    Neural Network      0.82      0.74      0.78        
+    
+When we look at precision we can see that k-nearest neighbors and the decision tree both did well in regards to how many of the records the model placed in category 2 which were actually in that category. This is a good metric for them, but based on our goal this isn't necessarily important since we are okay with some records falling into category 2 that weren't necessarily in that one. Recall is more likely to describe what we are really looking for since this is telling us how many records that fall into category 2 were labeled as such by the model. In this area the decision tree did poorly and the neural network did far better than all the others with a score of 0.74.
