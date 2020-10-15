@@ -49,11 +49,11 @@ Next we take a look at the distribution of the data relative to the flu counts.
 
 Not surprisingly this is a highly unbalanced dataset. To correct this I created three categories based on the value in the counts column. The categories are defined as follows:
   
-  Category 0 = 0
+  Category 0 = 0 cases
   
-  Category 1 = 1-99
+  Category 1 = 1-99 cases
   
-  Category 2 = 100+
+  Category 2 = 100+ cases
 
 ![Flu_balanced](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_balanced.PNG)
   
