@@ -43,4 +43,11 @@ Below are some time-series correlations from each location between the features 
 ![Max_temp_mal](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Max_temp_mal.PNG)
 
 ### Distribution of Flu Counts
-(https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_unbalanced.PNG)
+Next we take a look at the distribution of the data relative to the flu counts.
+![Flu_unbalanced](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_unbalanced.PNG)
+Not surprisingly this is a highly unbalanced dataset. To correct this I created three categories based on the value in the counts column. The categories are defined as follows:
+  Category 0 = 0
+  Category 1 = 1-99
+  Category 2 = 100+
+![Flu_balanced](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_balanced.PNG)
+  
