@@ -184,7 +184,11 @@ Here is the final model:
                       learning_rate='constant', 
                       solver='sgd', 
                       max_iter=1000)
-                      
+
+Training and validation loss for our model:
+
+![NN_loss](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/NN_loss.PNG)
+
 Our confusion matrix and accuracy scores:
 
      [[39 48  3]
