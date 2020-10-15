@@ -95,6 +95,11 @@ The values for the optimal solution turned out to be:
                                           
 The results of our model:
 
+      [[  0  89   1]
+       [  0 138   3]
+       [  0  55  33]]
+      Accuracy Score : 0.5360501567398119
+
               precision    recall  f1-score   support
 
          0.0       0.00      0.00      0.00        90
@@ -105,7 +110,13 @@ The results of our model:
    macro avg       0.46      0.45      0.39       319
 weighted avg       0.46      0.54      0.43       319
 
+
 Then I ran a random forest model with the same parameters and received the following results:
+
+        [[  0  87   3]
+         [  0 133   8]
+         [  0  34  54]]
+        Accuracy Score : 0.5862068965517241
 
                    precision    recall  f1-score   support
 
@@ -121,3 +132,38 @@ weighted avg       0.46      0.59      0.49       319
 ### KNN
 
 
+     [[51 39  0]
+      [36 99  6]
+      [ 1 29 58]]
+     Accuracy Score : 0.6520376175548589
+     
+                   precision    recall  f1-score   support
+
+         0.0       0.58      0.57      0.57        90
+         1.0       0.59      0.70      0.64       141
+         2.0       0.91      0.66      0.76        88
+
+    accuracy                           0.65       319
+   macro avg       0.69      0.64      0.66       319
+weighted avg       0.68      0.65      0.66       319
+
+
+### Neural Network
+
+
+     [[ 16  73   1]
+      [ 20 108  13]
+      [  1  22  65]]
+     Accuracy Score : 0.5924764890282131
+     
+     
+     Results on the test set:
+              precision    recall  f1-score   support
+
+         0.0       0.43      0.18      0.25        90
+         1.0       0.53      0.77      0.63       141
+         2.0       0.82      0.74      0.78        88
+
+    accuracy                           0.59       319
+   macro avg       0.60      0.56      0.55       319
+weighted avg       0.58      0.59      0.56       319
