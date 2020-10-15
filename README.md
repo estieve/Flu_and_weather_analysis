@@ -22,3 +22,8 @@ The influenza data was collected from two different sources, the WHO FluNet (htt
 I created an output dataframe for each location that included the key weather and flu data joined on the date column. With that completed I then joined them together into a single dataframe titled "flu_weather". I exported this as a csv to use in my data analysis.
 
 ## EDA
+Below are some time-series correlations from each location between the features and the target (flu count). Here I was just looking for notional relationships to see if anything stood out.
+
+![Precip_NY](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_NY.PNG)
+![Precip_lux](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_lux.PNG)
+![Precip_mal](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Precip_mal.PNG)
