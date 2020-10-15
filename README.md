@@ -76,7 +76,11 @@ I started with a decision tree to help identify importance features just to test
 
     avgTmin: .. 0.27
 
-Then I ran the decision tree through pruning to fine tune the parameters. I did this through a series of efforts to test the optimal values for:
+By visualizing the decision tree we can check for overfitting.
+
+![tree_unpruned](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/tree_unpruned.png)
+
+There are a lot of branches in this tree so I ran it through pruning to fine tune the parameters. I did this through a series of efforts to test the optimal values for:
 
     Max_depth
     min_samples_split
