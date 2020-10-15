@@ -110,6 +110,7 @@ The results of our model:
        macro avg       0.46      0.45      0.39       319
     weighted avg       0.46      0.54      0.43       319
 
+![dec_tree](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/dec_tree.png)
 
 Then I ran a random forest model with the same parameters and received the following results:
 
@@ -131,6 +132,15 @@ Then I ran a random forest model with the same parameters and received the follo
 
 ### KNN
 
+Next I tested utilizing K-nearest neighbors. To start I tested against different values for k between 2 and 19.
+
+![corr_plot](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/KNN_neighbors.PNG)
+
+k=5 proved to be our optimal option so I ran the following model on the data:
+
+    model = KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
+
+Our confusion matrix and accuracy scores:
 
      [[51 39  0]
       [36 99  6]
@@ -149,7 +159,29 @@ Then I ran a random forest model with the same parameters and received the follo
 
 
 ### Neural Network
+The last assessment utilizes a neural network. I ran tuning against the MLP Classifier utilizing the following parameters:
 
+    'max_iter':[100, 500, 1000],
+    'hidden_layer_sizes': [(5,), (10,), (20,)],
+    'activation': ['relu', 'tanh'],
+    'solver': ['sgd', 'adam'],
+    'alpha': [0.0001, 0.01, 0.05],
+    'learning_rate': ['constant', 'invscaling', 'adaptive'],
+
+The optimal parameters achieved for my model were:
+
+    {'activation': 'tanh', 'alpha': 0.05, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'max_iter': 1000, 'solver': 'sgd'}
+    
+Here is the final model:
+
+    model = MLPClassifier(hidden_layer_sizes=(20,), 
+                      activation='tanh', 
+                      alpha=0.05, 
+                      learning_rate='constant', 
+                      solver='sgd', 
+                      max_iter=1000)
+                      
+Our confusion matrix and accuracy scores:
 
      [[ 16  73   1]
       [ 20 108  13]
