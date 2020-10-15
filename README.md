@@ -57,3 +57,21 @@ Not surprisingly this is a highly unbalanced dataset. To correct this I created 
 
 ![Flu_balanced](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/Flu_balanced.PNG)
   
+This looks much better!
+
+### Correlation Matrix
+
+![corr_plot](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/corr_plot.PNG)
+
+## Data Analysis
+
+Before beginning any analysis I set up the test and training data and then utilized a standard scaler to scale the feature data between -1 and 1.
+
+### Decision Tree
+I started with a decision tree to help identify importance features just to test my assumptions that percipitation and max temperature are important features.
+
+    totPrecip:  0.39
+    
+    avgTmax: .. 0.35
+
+    avgTmin: .. 0.27
