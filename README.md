@@ -13,6 +13,14 @@ These are things that I had to deal with in the weather dataset before I could m
 
 ![WeatherMal_corrected](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/WeatherMal_corrected.PNG)
 
+The New York weather had to be dealt with in a slightly different way. The problem there was that we had significant outliers prior to 2018, if I addressed it in the same way as the other locations we would see something that looked like this:
+
+![NY_precip_prob](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/NY_precip_prob.PNG)
+
+This appeared to me to be a scaling issue with the data so rather than removing high values I scaled records above 1 inch to align better. I did this by creating a new column that was the log of the precipitation values and used the records in this value to replace corresponding records greater than 1 inch. While this isn't perfect it provides something that more closely mirrors what we might expect.
+
+![NY_precip_corre](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/NY_precip_corre.PNG)
+
 The final step involved prepping the data for merging with the weekly flu data, to do this I converted our dataframe of daily records into a new dataframe that calculated weekly averages for our attributes. I then converted the precipitation data to a weekly total because I felt that better represents the amount of precipitation for a given week.
 
 ### Flu Data
