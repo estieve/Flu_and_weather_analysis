@@ -100,15 +100,15 @@ The results of our model:
        [  0  55  33]]
       Accuracy Score : 0.5360501567398119
 
-              precision    recall  f1-score   support
+                    precision    recall  f1-score   support
 
-         0.0       0.00      0.00      0.00        90
-         1.0       0.49      0.98      0.65       141
-         2.0       0.89      0.38      0.53        88
+             0.0       0.00      0.00      0.00        90
+             1.0       0.49      0.98      0.65       141
+             2.0       0.89      0.38      0.53        88
 
-    accuracy                           0.54       319
-   macro avg       0.46      0.45      0.39       319
-weighted avg       0.46      0.54      0.43       319
+        accuracy                           0.54       319
+       macro avg       0.46      0.45      0.39       319
+    weighted avg       0.46      0.54      0.43       319
 
 
 Then I ran a random forest model with the same parameters and received the following results:
@@ -120,13 +120,13 @@ Then I ran a random forest model with the same parameters and received the follo
 
                    precision    recall  f1-score   support
 
-         0.0       0.00      0.00      0.00        90
-         1.0       0.52      0.94      0.67       141
-         2.0       0.83      0.61      0.71        88
+             0.0       0.00      0.00      0.00        90
+             1.0       0.52      0.94      0.67       141
+             2.0       0.83      0.61      0.71        88
 
-    accuracy                           0.59       319
-   macro avg       0.45      0.52      0.46       319
-weighted avg       0.46      0.59      0.49       319
+        accuracy                           0.59       319
+       macro avg       0.45      0.52      0.46       319
+    weighted avg       0.46      0.59      0.49       319
 
 
 ### KNN
@@ -137,15 +137,15 @@ weighted avg       0.46      0.59      0.49       319
       [ 1 29 58]]
      Accuracy Score : 0.6520376175548589
      
-                   precision    recall  f1-score   support
+                    precision    recall  f1-score   support
 
-         0.0       0.58      0.57      0.57        90
-         1.0       0.59      0.70      0.64       141
-         2.0       0.91      0.66      0.76        88
+              0.0       0.58      0.57      0.57        90
+              1.0       0.59      0.70      0.64       141
+              2.0       0.91      0.66      0.76        88
 
-    accuracy                           0.65       319
-   macro avg       0.69      0.64      0.66       319
-weighted avg       0.68      0.65      0.66       319
+         accuracy                           0.65       319
+        macro avg       0.69      0.64      0.66       319
+     weighted avg       0.68      0.65      0.66       319
 
 
 ### Neural Network
@@ -158,12 +158,12 @@ weighted avg       0.68      0.65      0.66       319
      
      
      Results on the test set:
-              precision    recall  f1-score   support
+                    precision    recall  f1-score   support
 
-         0.0       0.43      0.18      0.25        90
-         1.0       0.53      0.77      0.63       141
-         2.0       0.82      0.74      0.78        88
+              0.0       0.43      0.18      0.25        90
+              1.0       0.53      0.77      0.63       141
+              2.0       0.82      0.74      0.78        88
 
-    accuracy                           0.59       319
-   macro avg       0.60      0.56      0.55       319
-weighted avg       0.58      0.59      0.56       319
+         accuracy                           0.59       319
+        macro avg       0.60      0.56      0.55       319
+     weighted avg       0.58      0.59      0.56       319
