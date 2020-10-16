@@ -70,11 +70,11 @@ Before beginning any analysis I set up the test and training data and then utili
 ### Decision Tree
 I started with a decision tree to help identify importance features just to test my assumptions that percipitation and max temperature are important features.
 
-    totPrecip:  0.39
+    totPrecip:  0.44
     
-    avgTmax: .. 0.35
+    avgTmax: .. 0.31
 
-    avgTmin: .. 0.27
+    avgTmin: .. 0.25
 
 By visualizing the decision tree we can check for overfitting.
 
@@ -90,48 +90,50 @@ There are a lot of branches in this tree so I ran it through pruning to fine tun
     
 The values for the optimal solution turned out to be:
 
-    pruned_model = RandomForestClassifier(max_depth=3,
-                                          min_samples_split=30,
-                                          min_samples_leaf=10,
-                                          max_leaf_nodes=4,
-                                          min_impurity_decrease=0.02,
-                                          random_state=35)
+    pruned_model = tree.DecisionTreeClassifier(criterion='entropy', 
+                                                splitter='random', 
+                                                max_depth=5, 
+                                                min_samples_split=80, 
+                                                min_samples_leaf=50, 
+                                                max_leaf_nodes=7, 
+                                                min_impurity_decrease=0.01, 
+                                                random_state=35)
                                           
 The results of our model:
 
-      [[  0  89   1]
-       [  0 138   3]
-       [  0  55  33]]
-      Accuracy Score : 0.5360501567398119
+        [[ 0 88  5]
+         [ 0 90 66]
+         [ 0  2 68]]
+         Accuracy Score : 0.4952978056426332
 
-                    precision    recall  f1-score   support
+                            precision    recall  f1-score   support
 
-             0.0       0.00      0.00      0.00        90
-             1.0       0.49      0.98      0.65       141
-             2.0       0.89      0.38      0.53        88
+                   0.0       0.00      0.00      0.00        93
+                   1.0       0.50      0.58      0.54       156
+                   2.0       0.49      0.97      0.65        70
 
-        accuracy                           0.54       319
-       macro avg       0.46      0.45      0.39       319
-    weighted avg       0.46      0.54      0.43       319
+              accuracy                           0.50       319
+             macro avg       0.33      0.52      0.40       319
+          weighted avg       0.35      0.50      0.40       319
 
 ![dec_tree](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/dec_tree.png)
 
 Then I ran a random forest model with the same parameters and received the following results:
 
-        [[  0  87   3]
-         [  0 133   8]
-         [  0  34  54]]
-        Accuracy Score : 0.5862068965517241
+        [[  0  92   1]
+         [  0 125  31]
+         [  0  21  49]]
+         Accuracy Score : 0.5454545454545454
 
-                   precision    recall  f1-score   support
+                        precision    recall  f1-score   support
 
-             0.0       0.00      0.00      0.00        90
-             1.0       0.52      0.94      0.67       141
-             2.0       0.83      0.61      0.71        88
+                 0.0       0.00      0.00      0.00        93
+                 1.0       0.53      0.80      0.63       156
+                 2.0       0.60      0.70      0.65        70
 
-        accuracy                           0.59       319
-       macro avg       0.45      0.52      0.46       319
-    weighted avg       0.46      0.59      0.49       319
+            accuracy                           0.55       319
+           macro avg       0.38      0.50      0.43       319
+        weighted avg       0.39      0.55      0.45       319
 
 
 ### KNN
@@ -140,26 +142,27 @@ Next I tested utilizing K-nearest neighbors. To start I tested against different
 
 ![corr_plot](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/KNN_neighbors.PNG)
 
-k=5 proved to be our optimal option so I ran the following model on the data:
+k=15 proved to be our optimal option so I ran the following model on the data:
 
     model = KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
 
 Our confusion matrix and accuracy scores:
 
-     [[51 39  0]
-      [36 99  6]
-      [ 1 29 58]]
-     Accuracy Score : 0.6520376175548589
+
+      [[ 53  38   2]
+       [ 29 101  26]
+       [  0  13  57]]
+       Accuracy Score : 0.6614420062695925
      
-                    precision    recall  f1-score   support
+                        precision    recall  f1-score   support
 
-              0.0       0.58      0.57      0.57        90
-              1.0       0.59      0.70      0.64       141
-              2.0       0.91      0.66      0.76        88
+                 0.0       0.65      0.57      0.61        93
+                 1.0       0.66      0.65      0.66       156
+                 2.0       0.67      0.81      0.74        70
 
-         accuracy                           0.65       319
-        macro avg       0.69      0.64      0.66       319
-     weighted avg       0.68      0.65      0.66       319
+            accuracy                           0.66       319
+           macro avg       0.66      0.68      0.67       319
+        weighted avg       0.66      0.66      0.66       319
 
 
 ### Neural Network
@@ -174,16 +177,16 @@ The last assessment utilizes a neural network. I ran tuning against the MLP Clas
 
 The optimal parameters achieved for my model were:
 
-    {'activation': 'tanh', 'alpha': 0.05, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'max_iter': 1000, 'solver': 'sgd'}
+    {'activation': 'relu', 'alpha': 0.0001, 'hidden_layer_sizes': (20,), 'learning_rate': 'constant', 'max_iter': 500, 'solver': 'adam'}
     
 Here is the final model:
 
     model = MLPClassifier(hidden_layer_sizes=(20,), 
-                      activation='tanh', 
-                      alpha=0.05, 
-                      learning_rate='constant', 
-                      solver='sgd', 
-                      max_iter=1000)
+                          activation='relu', 
+                          alpha=0.0001, 
+                          learning_rate='constant', 
+                          solver='adam', 
+                          max_iter=500)
 
 Training and validation loss for our model:
 
@@ -191,42 +194,42 @@ Training and validation loss for our model:
 
 Our confusion matrix and accuracy scores:
 
-     [[39 48  3]
-      [41 83 17]
-      [ 3 18 67]]
-      Accuracy Score : 0.5924764890282131
+     [[53  38   2]
+      [23 110  23]
+      [ 0  14  56]]
+      Accuracy Score : 0.6865203761755486
      
      
      Results on the test set:
-                    precision    recall  f1-score   support
+                          precision    recall  f1-score   support
 
-             0.0       0.47      0.43      0.45        90
-             1.0       0.56      0.59      0.57       141
-             2.0       0.77      0.76      0.77        88
+                 0.0       0.70      0.57      0.63        93
+                 1.0       0.68      0.71      0.69       156
+                 2.0       0.69      0.80      0.74        70
 
-        accuracy                           0.59       319
-       macro avg       0.60      0.59      0.60       319
-    weighted avg       0.59      0.59      0.59       319
+            accuracy                           0.69       319
+           macro avg       0.69      0.69      0.69       319
+        weighted avg       0.69      0.69      0.68       319
      
 ## Results and Conclusions
 
 ### What did we learn? 
 If we look solely at our accuracy scores:
 
-    Decision Tree   Accuracy Score : 0.5360501567398119
-    Random Forest   Accuracy Score : 0.5862068965517241
-    KNN             Accuracy Score : 0.6520376175548589
-    Neural Network  Accuracy Score : 0.5924764890282131
+    Decision Tree   Accuracy Score : 0.4952978056426332
+    Random Forest   Accuracy Score : 0.5454545454545454
+    KNN             Accuracy Score : 0.6614420062695925
+    Neural Network  Accuracy Score : 0.6865203761755486
     
-K-nearest neighbors provided us with the best model, but the accuracy score doesn't tell us the whole story. The purpose of the project was to predict the severity of flu based on weather conditions. The reason we may want to do this type of analysis is to prepare for conditions that may result in a particularly bad season. In this case the most important category is 2, which includes weeks with 100+ positive flu cases. With this in mind we are more likely to be okay with measuring false positives from the other categories which fall into this one. Because of this accuracy is not necessarily our best metric for our purposes, rather we need to look more closely at the classification report. This allows us to see specifically how well each model scored against the specific categories. Below we will look at the results for category 2.
+K-nearest neighbors and the neural net provided us with the best models, but the accuracy score doesn't tell us the whole story. The purpose of the project was to predict the severity of flu based on weather conditions. The reason we may want to do this type of analysis is to prepare for conditions that may result in a particularly bad season. In this case the most important category is 2, which includes weeks with 100+ positive flu cases. With this in mind we are more likely to be okay with measuring false positives from the other categories which fall into this one. Because of this accuracy is not necessarily our best metric for our purposes, rather we need to look more closely at the classification report. This allows us to see specifically how well each model scored against the specific categories. Below we will look at the results for category 2.
 
                     precision    recall  f1-score   
-    Decision Tree       0.89      0.38      0.53        
-    Random Forest       0.83      0.61      0.71        
-    KNN                 0.91      0.66      0.76        
-    Neural Network      0.77      0.76      0.77        
+    Decision Tree       0.49      0.97      0.65        
+    Random Forest       0.60      0.70      0.65       
+    KNN                 0.67      0.81      0.74        
+    Neural Network      0.69      0.80      0.74        
     
-When we look at precision we can see that k-nearest neighbors and the decision tree both did well in regards to how many of the records the model placed in category 2 which were actually in that category. This is a good metric for them, but based on our goal this isn't necessarily important since we are okay with some records falling into category 2 that weren't necessarily in that one. Recall is more likely to describe what we are really looking for since this is telling us how many records that fall into category 2 were labeled as such by the model. In this area the decision tree did poorly and the neural network did far better than all the others with a score of 0.76. This leads me to believe that the best model for our purposes would be the Neural Network.
+When we look at precision we can see that k-nearest neighbors and the neural net both did well in regards to how many of the records the model placed in category 2 which were actually in that category. This is a good metric for them, but based on our goal this isn't necessarily important since we are okay with some records falling into category 2 that weren't necessarily in that one. Recall is more likely to describe what we are really looking for since this is telling us how many records that fall into category 2 were labeled as such by the model. In this area the decision tree actually did the best at 0.97 while the neural network and knn models still showed very will with scores of 0.80 and 0.81. The problem with the decision tree is how poorly it did on every other measure (accuracy score of 0.495 and precision on category 2 at 0.49). This leads me to look towards the knn and neural net as our best options. The slight edge goes to the neural net on every important category, but the knn still holds fairly well and is worth keeping in consideration for future analysis.
 
 ### Challenges and Future Considerations
 This effort was far from complete based on the end goal for the analysis. I believe that we have succeeded in finding some correlation between weather and flu infections, but we were not quite comprehensive enough to reach a state where we could confidently predict severity of the flu season. To do so would require a more detailed dataset, specifically in regards to weather tracking. I feel that the three variables we were able to aquire from NOAA are a begninning, but do not contain enough nuance to get us to a final state. Initially my thoughts are that humidity data could prove valuable, we can hint at that with the precipitation information but that really only provides us with a binary 100% or not with regards to moisture in the atmosphere. Another valuable piece of information might be climactic trends, we are dealing with recorded weather data any predictions will need to be based on projections several months out rather than for specific weeks. Incorporating seasonal records into our model could help to refine it, and provide valuable insights when it comes to forcasting the severity of the flu season as a whole. If we can find a way to impute seasonal predictions for moisture, temperatures and weather patterns that can help us target the model to predict what is coming before the flu season starts.
