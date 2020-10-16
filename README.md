@@ -9,7 +9,7 @@ The NOAA api only allows for 365 day of data in a single pull with one attribute
 
 ![WeatherMal_outliers](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/WeatherMal_outliers.PNG)
 
-These are things that I had to deal with in the weather dataset before I could move forward with adding the flu data. To do so, I removed the egregious values by making then Nan's and reseting exceptionally low values to a specified minimum (0 for precipitation and the location's lowest seasonal temperature for temp). The Nan's I then reset to a mean value since there was a wide distribution of Nan data and filling forward created high plateau peaks of data. 
+These are things that I had to deal with in the weather dataset before I could move forward with adding the flu data. To do so, I removed the egregious values by making then Nan's and reseting exceptionally low values to a specified minimum (0 for precipitation and the location's lowest seasonal temperature for temp). The Nan's for temperature I then reset to a mean value since there was a wide distribution of Nan data and filling forward created high plateau peaks of data. For precipitation I set all values higher than 0.2 inches (the mean daily total) to 0.2 inches. This was not ideal, but setting to the mean value seemed to alter the variance in the data too much and this seemed like a reasonable middle ground.
 
 ![WeatherMal_corrected](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/WeatherMal_corrected.PNG)
 
@@ -17,7 +17,7 @@ The New York weather had to be dealt with in a slightly different way. The probl
 
 ![NY_precip_prob](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/NY_precip_prob.PNG)
 
-This appeared to me to be a scaling issue with the data so rather than removing high values I scaled records above 1 inch to align better. I did this by creating a new column that was the log of the precipitation values and used the records in this value to replace corresponding records greater than 1 inch. While this isn't perfect it provides something that more closely mirrors what we might expect.
+This appeared to me to be a scaling issue with the data so rather than removing high values I scaled records above 0.2 inches (the average daily total for NYC) to align better. I did this by multiplying these values by 0.001. While this isn't perfect it provides something that more closely mirrors what we might expect.
 
 ![NY_precip_corre](https://github.com/estieve/Flu_and_weather_analysis/blob/main/Images/NY_precip_corre.PNG)
 
